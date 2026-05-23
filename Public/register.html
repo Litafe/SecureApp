@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register - SecureApp</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+<div class="logo">🔐 SecureApp</div>
+<div class="icon">🛡️</div>
+
+<h2>Register</h2>
+
+<form id="form">
+  <input id="username" placeholder="Username" required><br>
+  <input id="password" type="password" placeholder="Password" required><br>
+  <button>Register</button>
+</form>
+
+<img id="qr" style="margin-top:20px;">
+
+</div>
+
+<script>
+document.getElementById('form').onsubmit = async (e) => {
+  e.preventDefault();
+
+  const res = await fetch('/register', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({
+      username: username.value,
+      password: password.value
+    })
+  });
+
+  const data = await res.json();
+
+  if(data.qrCodeUrl){
+    qr.src = data.qrCodeUrl;
+    document.body.innerHTML += "<br><a href='login.html'>Go to Login</a>";
+  } else {
+    alert(data.error);
+  }
+};
+</script>
+
+</body>
+</html>

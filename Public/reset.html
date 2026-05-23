@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reset Password - SecureApp</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+<div class="logo">🔐 SecureApp</div>
+<div class="icon">♻️</div>
+
+<h2>Reset Account</h2>
+
+<form id="form">
+  <input id="username" placeholder="Username" required><br>
+  <input id="password" type="password" placeholder="New Password" required><br>
+  <button>Reset</button>
+</form>
+
+<p id="msg"></p>
+<img id="qr">
+
+</div>
+
+<script>
+document.getElementById('form').onsubmit = async (e) => {
+  e.preventDefault();
+
+  const res = await fetch('/reset', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({
+      username: username.value,
+      password: password.value
+    })
+  });
+
+  const data = await res.json();
+
+  if(data.qrCodeUrl){
+    msg.innerText = "Reset successful. Scan new QR.";
+    qr.src = data.qrCodeUrl;
+  } else {
+    msg.innerText = data.error;
+  }
+};
+</script>
+
+</body>
+</html>

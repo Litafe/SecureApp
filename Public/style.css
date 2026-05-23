@@ -1,0 +1,82 @@
+/* GLOBAL */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+  color: #fff;
+  text-align: center;
+}
+
+/* CONTAINER */
+.container {
+  margin-top: 80px;
+}
+
+/* LOGO */
+.logo {
+  font-size: 40px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #00ffcc;
+  text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+}
+
+/* HEADINGS */
+h2, h3 {
+  color: #00ffcc;
+  text-shadow: 0 0 5px #00ffcc;
+}
+
+/* INPUTS */
+input {
+  padding: 10px;
+  margin: 8px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  width: 200px;
+  background: #111;
+  color: #fff;
+  border: 1px solid #00ffcc;
+}
+
+/* BUTTONS */
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  background: #00ffcc;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #00ccaa;
+  box-shadow: 0 0 10px #00ffcc;
+}
+
+/* LINKS */
+a {
+  color: #00ffcc;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* OUTPUT TEXT */
+#output, #strength {
+  font-weight: bold;
+  font-size: 18px;
+  text-shadow: 0 0 5px #00ffcc;
+}
+
+/* ICONS */
+.icon {
+  font-size: 50px;
+  margin-bottom: 10px;
+}

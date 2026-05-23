@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - SecureApp</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+<div class="logo">🔐 SecureApp</div>
+<div class="icon">🔑</div>
+
+<h2>Login</h2>
+
+<form id="form">
+  <input id="username" placeholder="Username" required><br>
+  <input id="password" type="password" placeholder="Password" required><br>
+  <input id="token" placeholder="2FA Code" required><br>
+  <button>Login</button>
+</form>
+
+<p id="msg"></p>
+
+<a href="register.html">Register</a><br>
+<a href="reset.html">Forgot Password?</a>
+
+</div>
+
+<script>
+document.getElementById('form').onsubmit = async (e) => {
+  e.preventDefault();
+
+  const res = await fetch('/login', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({
+      username: username.value,
+      password: password.value,
+      token: token.value
+    })
+  });
+
+  const data = await res.json();
+
+  if(data.success){
+    localStorage.setItem("loggedIn","true");
+    window.location.href = "index.html";
+  } else {
+    msg.innerText = data.error;
+  }
+};
+</script>
+
+</body>
+</html>
