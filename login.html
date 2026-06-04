@@ -3,56 +3,242 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login - SecureApp</title>
-<link rel="stylesheet" href="style.css">
+
+<title>SecureSys</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:#040814;
+font-family:'Plus Jakarta Sans',sans-serif;
+min-height:100vh;
+overflow:hidden;
+position:relative;
+color:white;
+}
+
+/* GRID */
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+
+background-image:
+linear-gradient(rgba(0,255,255,.06) 1px, transparent 1px),
+linear-gradient(90deg, rgba(0,255,255,.06) 1px, transparent 1px);
+
+background-size:45px 45px;
+}
+
+/* FLOATING ICONS */
+
+.icon{
+position:fixed;
+color:rgba(0,255,255,.12);
+font-size:70px;
+}
+
+.i1{top:90px;left:70px;}
+.i2{right:70px;top:340px;}
+.i3{bottom:60px;left:90px;}
+.i4{bottom:80px;right:90px;}
+
+.wrapper{
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+position:relative;
+z-index:2;
+}
+
+.card{
+
+width:500px;
+
+background:
+linear-gradient(
+180deg,
+rgba(13,17,34,.97),
+rgba(8,11,24,.97)
+);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:24px;
+
+padding:40px;
+
+text-align:center;
+
+box-shadow:
+0 20px 80px rgba(0,0,0,.5);
+}
+
+.logo{
+width:92px;
+height:92px;
+
+margin:auto;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+font-size:42px;
+
+border-radius:18px;
+
+background:rgba(0,255,255,.05);
+
+border:1px solid rgba(0,255,255,.15);
+
+color:#19e5ff;
+}
+
+h1{
+font-family:'Chakra Petch',sans-serif;
+font-size:54px;
+font-weight:700;
+margin-top:25px;
+}
+
+h1 span{
+color:#19e5ff;
+}
+
+.subtitle{
+margin-top:10px;
+color:#9db1d4;
+font-size:20px;
+}
+
+.line{
+height:1px;
+background:rgba(255,255,255,.08);
+margin:32px 0;
+}
+
+.desc{
+line-height:1.8;
+color:#afc0dd;
+font-size:18px;
+}
+
+.notice{
+
+margin-top:30px;
+
+padding:18px;
+
+border-radius:14px;
+
+border:1px solid rgba(0,255,255,.15);
+
+background:rgba(0,255,255,.04);
+
+text-align:left;
+
+color:#9eb1ce;
+
+line-height:1.6;
+}
+
+.notice strong{
+color:#19e5ff;
+}
+
+button{
+
+width:100%;
+height:58px;
+
+border:none;
+
+margin-top:26px;
+
+border-radius:12px;
+
+background:#19e5ff;
+
+font-size:22px;
+font-weight:600;
+
+cursor:pointer;
+}
+
+button:hover{
+box-shadow:
+0 0 30px rgba(25,229,255,.45);
+}
+
+.footer{
+
+margin-top:22px;
+
+color:#8c9cb6;
+
+font-size:14px;
+
+line-height:1.6;
+}
+
+</style>
 </head>
+
 <body>
 
-<div class="container">
+<div class="icon i1">🛡</div>
+<div class="icon i2">🔑</div>
+<div class="icon i3">🔒</div>
+<div class="icon i4">🌀</div>
 
-<div class="logo">🔐 SecureApp</div>
-<div class="icon">🔑</div>
+<div class="wrapper">
 
-<h2>Login</h2>
+<div class="card">
 
-<form id="form">
-  <input id="username" placeholder="Username" required><br>
-  <input id="password" type="password" placeholder="Password" required><br>
-  <input id="token" placeholder="2FA Code" required><br>
-  <button>Login Securely</button>
-</form>
+<div class="logo">🛡</div>
 
-<p id="msg"></p>
+<h1>SECURE<span>SYS</span></h1>
 
-<a href="register.html">Register</a><br>
-<a href="reset.html">Forgot Password?</a>
+<div class="subtitle">
+Password Security Analyzer
+</div>
+
+<div class="line"></div>
+
+<div class="desc">
+This tool is restricted to authorized users only.
+Sign in to access the password generator,
+strength analyzer and security research tools.
+</div>
+
+<div class="notice">
+<strong>Two-Factor Authentication</strong>
+is enforced. If you have 2FA enabled on your account,
+you will be required to verify it during sign-in.
+</div>
+
+<button onclick="window.location.href='login-form.html'">
+🛡 Sign In Securely
+</button>
+
+<div class="footer">
+Bachelor Thesis Research Tool · Password Security & User Behaviour
+</div>
 
 </div>
 
-<script>
-document.getElementById('form').onsubmit = async (e) => {
-  e.preventDefault();
-
-  const res = await fetch('/login', {
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({
-      username: username.value,
-      password: password.value,
-      token: token.value
-    })
-  });
-
-  const data = await res.json();
-
-  if(data.success){
-    localStorage.setItem("loggedIn","true");
-    window.location.href = "index.html";
-  } else {
-    msg.innerText = data.error;
-  }
-};
-</script>
+</div>
 
 </body>
 </html>
