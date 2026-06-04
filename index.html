@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SecureApp</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<script>
+if(localStorage.getItem("loggedIn") !== "true"){
+  window.location.href = "login.html";
+}
+</script>
+
+<div class="container">
+
+<div class="logo">🔐 SecureApp</div>
+<div class="icon">🛡️</div>
+
+<button onclick="logout()">Logout</button>
+
+<h3>Password Generator</h3>
+<input id="length" type="number" value="12">
+<button onclick="generatePassword()">Generate</button>
+<p id="output"></p>
+
+<h3>Password Analyzer</h3>
+<input id="analyzeInput" placeholder="Enter password">
+<button onclick="analyzePassword()">Analyze</button>
+<p id="strength"></p>
+
+</div>
+
+<script src="script.js"></script>
+<script>
+function logout(){
+  localStorage.removeItem("loggedIn");
+  window.location.href = "login.html";
+}
+</script>
+
+</body>
+</html>
