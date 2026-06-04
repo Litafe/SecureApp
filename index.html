@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SecureApp</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SECURESYS</title>
 <link rel="stylesheet" href="style.css">
+
+<!-- Icons -->
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
 </head>
+
 <body>
 
 <script>
@@ -14,26 +21,79 @@ if(localStorage.getItem("loggedIn") !== "true"){
 }
 </script>
 
+<div class="background-icons">
+  <i class="fa-solid fa-shield"></i>
+  <i class="fa-solid fa-lock"></i>
+  <i class="fa-solid fa-key"></i>
+  <i class="fa-solid fa-fingerprint"></i>
+</div>
+
 <div class="container">
 
-<div class="logo">🔐 SecureApp</div>
-<div class="icon">🛡️</div>
+  <div class="shield-box">
+    <i class="fa-solid fa-shield-halved"></i>
+  </div>
 
-<button onclick="logout()">Logout</button>
+  <h1 class="logo">
+    SECURE<span>SYS</span>
+  </h1>
 
-<h3>Password Generator</h3>
-<input id="length" type="number" value="12">
-<button onclick="generatePassword()">Generate</button>
-<p id="output"></p>
+  <p class="subtitle">
+    Password Security Analyzer
+  </p>
 
-<h3>Password Analyzer</h3>
-<input id="analyzeInput" placeholder="Enter password">
-<button onclick="analyzePassword()">Analyze</button>
-<p id="strength"></p>
+  <div class="divider"></div>
+
+  <p class="description">
+    This tool is restricted to authorized users only.
+    Access the password generator, strength analyzer,
+    and security research tools.
+  </p>
+
+  <div class="alert-box">
+    <i class="fa-solid fa-lock"></i>
+    <div>
+      <strong>Two-Factor Authentication</strong> is enforced.
+      Secure password analysis enabled.
+    </div>
+  </div>
+
+  <div class="tools">
+
+    <h3>Password Generator</h3>
+
+    <input id="length" type="number" value="12" min="4" max="50">
+
+    <button onclick="generatePassword()">
+      Generate Password
+    </button>
+
+    <p id="output"></p>
+
+    <h3>Password Analyzer</h3>
+
+    <input id="analyzeInput" placeholder="Enter password">
+
+    <button onclick="analyzePassword()">
+      Analyze Password
+    </button>
+
+    <p id="strength"></p>
+
+  </div>
+
+  <button class="logout-btn" onclick="logout()">
+    Logout Securely
+  </button>
+
+  <p class="footer-text">
+    Bachelor Thesis Research Tool · Password Security & User Behaviour
+  </p>
 
 </div>
 
 <script src="script.js"></script>
+
 <script>
 function logout(){
   localStorage.removeItem("loggedIn");
