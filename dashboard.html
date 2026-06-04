@@ -18,14 +18,11 @@
   <button onclick="logout()">Logout</button>
 </div>
 
-<script src="script.js"></script>
-
 <script>
-  // temporary fallback so GitHub doesn't flag missing function
-  function logout() {
-    alert("Logout function not implemented yet.");
-    // window.location.href = "index.html";
-  }
+function logout(){
+  localStorage.removeItem("loggedIn");
+  window.location.href = "login.html";
+}
 </script>
 
 </body>
