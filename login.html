@@ -228,9 +228,16 @@ is enforced. If you have 2FA enabled on your account,
 you will be required to verify it during sign-in.
 </div>
 
-<button onclick="window.location.href='login-form.html'">
+<button onclick="signIn()">
 🛡 Sign In Securely
 </button>
+
+<script>
+function signIn(){
+    localStorage.setItem("loggedIn", "true");
+    window.location.href = "index.html";
+}
+</script>
 
 <div class="footer">
 Bachelor Thesis Research Tool · Password Security & User Behaviour
