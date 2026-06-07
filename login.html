@@ -278,16 +278,16 @@ const qrImage = document.getElementById("qrImage");
 registerForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    message.textContent = "";
-    message.className = "message";
-
     const username = document.getElementById("username").value.trim();
     const password = document.getElementById("password").value;
     const confirmPassword =
         document.getElementById("confirmPassword").value;
 
+    message.textContent = "";
+    message.className = "message";
+
     if (password !== confirmPassword) {
-        message.textContent = "The passwords do not match.";
+        message.textContent = "Passwords do not match.";
         message.className = "message error";
         return;
     }
@@ -309,22 +309,15 @@ registerForm.addEventListener("submit", async (event) => {
 
         const data = await response.json();
 
-        if (!response.ok) {
-            throw new Error(data.error || "Registration failed.");
+        if (data.error) {
+            throw new Error(data.error);
         }
 
-        const qrCode =
-            data.qrCode ||
-            data.qrCodeDataUrl ||
-            data.qr;
-
-        if (!qrCode) {
-            throw new Error(
-                "Account created, but the server did not return a QR code."
-            );
+        if (!data.qrCodeUrl) {
+            throw new Error("The server did not return a QR code.");
         }
 
-        qrImage.src = qrCode;
+        qrImage.src = data.qrCodeUrl;
         qrSection.style.display = "block";
         registerForm.style.display = "none";
 
@@ -339,6 +332,5 @@ registerForm.addEventListener("submit", async (event) => {
     }
 });
 </script>
-
 </body>
 </html>
