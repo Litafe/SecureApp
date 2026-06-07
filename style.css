@@ -145,3 +145,18 @@
         font-size:14px;
     }
 }
+.container .tools h3,
+.container .tools #output,
+.container .tools #strength {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background: transparent !important;
+}
+
+.container .tools #output,
+.container .tools #strength {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 15px 0 25px;
+    min-height: 22px;
+}
