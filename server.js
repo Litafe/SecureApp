@@ -7,22 +7,46 @@ const qrcode = require('qrcode');
 
 const app = express();
 app.use(bodyParser.json());
-app.use(express.static('public'));
+const path = require('path');
 
-const USERS_FILE = './users.json';
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'login.html'));
+});
 
-// Load users
+app.get('/login.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'login.html'));
+});
+
+app.get('/register.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'register.html'));
+});
+
+app.get('/index.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+app.get('/reset.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'reset.html'));
+});
+
+app.get('/style.css', (req, res) => {
+  res.sendFile(path.join(__dirname, 'style.css'));
+});
+
+app.get('/script.js', (req, res) => {
+  res.sendFile(path.join(__dirname, 'script.js'));
+});
+const USERS_FILE = path.join(__dirname, 'users.json');
+
 function loadUsers() {
   if (!fs.existsSync(USERS_FILE)) return [];
   return JSON.parse(fs.readFileSync(USERS_FILE));
 }
 
-// Save users
 function saveUsers(users) {
   fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2));
 }
 
-// REGISTER
 app.post('/register', async (req, res) => {
   const { username, password } = req.body;
 
@@ -72,7 +96,6 @@ app.post('/login', async (req, res) => {
   res.json({ success: true });
 });
 
-// RESET
 app.post('/reset', async (req, res) => {
   const { username, password } = req.body;
 
