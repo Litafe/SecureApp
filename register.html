@@ -3,49 +3,268 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Register - SecureApp</title>
+
 <link rel="stylesheet" href="style.css">
+
+<style>
+.register-form input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 46px;
+    margin-bottom: 12px;
+    padding: 0 14px;
+
+    color: #ffffff;
+    background: #0c1225;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+}
+
+.register-form input::placeholder {
+    color: #8696b3;
+}
+
+.register-form input:focus {
+    outline: none;
+    border-color: #18e4ff;
+    box-shadow: 0 0 0 3px rgba(24, 228, 255, 0.12);
+}
+
+.register-form button {
+    width: 100%;
+    height: 48px;
+
+    color: #00131a;
+    background: #18e4ff;
+
+    border: none;
+    border-radius: 12px;
+
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.register-form button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+#message {
+    min-height: 22px;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.message-error {
+    color: #ff7185;
+}
+
+.message-success {
+    color: #5ef2a0;
+}
+
+.qr-section {
+    display: none;
+    margin-top: 24px;
+    padding: 20px;
+
+    color: #b5c3dd;
+    background: rgba(0, 255, 255, 0.04);
+
+    border: 1px solid rgba(0, 255, 255, 0.15);
+    border-radius: 16px;
+}
+
+.qr-section h2 {
+    margin-bottom: 12px;
+    color: #ffffff;
+}
+
+.qr-section p {
+    margin: 12px 0;
+    line-height: 1.6;
+}
+
+.qr-section img {
+    width: 210px;
+    max-width: 100%;
+    padding: 10px;
+
+    background: #ffffff;
+    border-radius: 12px;
+}
+
+.continue-link {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 12px 22px;
+
+    color: #00131a;
+    background: #18e4ff;
+
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.footer-text a {
+    color: #18e4ff;
+    text-decoration: none;
+    font-weight: 600;
+}
+</style>
 </head>
+
 <body>
 
 <div class="container">
 
-<div class="shield-box">🛡️</div>
+    <div class="shield-box">🛡️</div>
 
-<h1 class="logo">Secure<span>App</span></h1>
-<p class="subtitle">Create your account</p>
+    <h1 class="logo">Secure<span>App</span></h1>
+    <p class="subtitle">Create your account</p>
 
-<form id="form">
-    <input id="username" type="text" placeholder="Username" required>
-    <input id="password" type="password" placeholder="Password" required>
-    <button type="submit">Register</button>
-</form>
+    <form id="registerForm" class="register-form">
 
-<p id="message"></p>
+        <input
+            id="username"
+            type="text"
+            placeholder="Email or username"
+            autocomplete="username"
+            required
+        >
 
-<div class="footer-text">
-    Already have an account?
-    <a href="login.html">Sign In</a>
-</div>
+        <input
+            id="password"
+            type="password"
+            placeholder="Create a password"
+            autocomplete="new-password"
+            minlength="8"
+            required
+        >
+
+        <input
+            id="confirmPassword"
+            type="password"
+            placeholder="Confirm your password"
+            autocomplete="new-password"
+            minlength="8"
+            required
+        >
+
+        <button id="registerButton" type="submit">
+            Register
+        </button>
+
+        <p id="message"></p>
+
+    </form>
+
+    <section id="qrSection" class="qr-section">
+
+        <h2>Connect your authenticator app</h2>
+
+        <p>
+            Scan this QR code with Google Authenticator,
+            Microsoft Authenticator, or another TOTP application.
+        </p>
+
+        <img id="qrImage" alt="Authenticator registration QR code">
+
+        <p>
+            After scanning the QR code, continue to the login page and
+            enter the current six-digit code from your authenticator app.
+        </p>
+
+        <a class="continue-link" href="login.html">
+            Continue to Login
+        </a>
+
+    </section>
+
+    <div class="footer-text">
+        Already have an account?
+        <a href="login.html">Sign In</a>
+    </div>
 
 </div>
 
 <script>
-document.getElementById("form").addEventListener("submit", function(e) {
-    e.preventDefault();
+const registerForm = document.getElementById("registerForm");
+const registerButton = document.getElementById("registerButton");
+const message = document.getElementById("message");
+const qrSection = document.getElementById("qrSection");
+const qrImage = document.getElementById("qrImage");
 
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+registerForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-    localStorage.setItem("secureapp_user", username);
-    localStorage.setItem("secureapp_pass", password);
+    const username = document
+        .getElementById("username")
+        .value
+        .trim();
 
-    document.getElementById("message").innerText =
-        "Registration successful. You can now sign in.";
+    const password =
+        document.getElementById("password").value;
 
-    setTimeout(() => {
-        window.location.href = "login.html";
-    }, 1500);
+    const confirmPassword =
+        document.getElementById("confirmPassword").value;
+
+    message.textContent = "";
+    message.className = "";
+
+    if (password !== confirmPassword) {
+        message.textContent = "The passwords do not match.";
+        message.className = "message-error";
+        return;
+    }
+
+    registerButton.disabled = true;
+    registerButton.textContent = "Creating account...";
+
+    try {
+        const response = await fetch("/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username,
+                password
+            })
+        });
+
+        const data = await response.json();
+
+        if (data.error) {
+            throw new Error(data.error);
+        }
+
+        if (!data.qrCodeUrl) {
+            throw new Error(
+                "The account was created, but no QR code was returned."
+            );
+        }
+
+        qrImage.src = data.qrCodeUrl;
+
+        registerForm.style.display = "none";
+        qrSection.style.display = "block";
+
+    } catch (error) {
+        message.textContent =
+            error.message || "Registration failed.";
+
+        message.className = "message-error";
+
+    } finally {
+        registerButton.disabled = false;
+        registerButton.textContent = "Register";
+    }
 });
 </script>
 
