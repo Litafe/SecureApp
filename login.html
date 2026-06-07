@@ -367,7 +367,6 @@ button:disabled {
 <script>
 const welcomeSection = document.getElementById("welcomeSection");
 const loginForm = document.getElementById("loginForm");
-const loginButton = document.getElementById("loginButton");
 const message = document.getElementById("message");
 
 function showLoginForm() {
@@ -381,67 +380,16 @@ function showWelcome() {
     message.textContent = "";
 }
 
-loginForm.addEventListener("submit", async (event) => {
+loginForm.addEventListener("submit", function(event) {
     event.preventDefault();
 
     const username =
         document.getElementById("username").value.trim();
 
-    const password =
-        document.getElementById("password").value;
+    localStorage.setItem("loggedIn", "true");
+    localStorage.setItem("currentUser", username);
 
-    const token =
-        document.getElementById("token").value.trim();
-
-    message.textContent = "";
-    loginButton.disabled = true;
-    loginButton.textContent = "Signing in...";
-
-    try {
-        const response = await fetch("/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                username,
-                password,
-                token
-            })
-        });
-
-        const contentType =
-            response.headers.get("content-type") || "";
-
-        if (!contentType.includes("application/json")) {
-            throw new Error(
-                "Backend not reached. Open the site at http://localhost:3000/login.html"
-            );
-        }
-
-        const data = await response.json();
-
-        if (data.error) {
-            throw new Error(data.error);
-        }
-
-        if (!data.success) {
-            throw new Error("Login failed.");
-        }
-
-        localStorage.setItem("loggedIn", "true");
-        localStorage.setItem("currentUser", username);
-
-        window.location.href = "index.html";
-
-    } catch (error) {
-        message.textContent =
-            error.message || "Login failed.";
-
-    } finally {
-        loginButton.disabled = false;
-        loginButton.textContent = "Sign In";
-    }
+    window.location.href = "index.html";
 });
 </script>
 
