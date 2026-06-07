@@ -6,7 +6,10 @@
 
 <title>SecureSys</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link
+    href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet"
+>
 
 <style>
 * {
@@ -16,12 +19,12 @@
 }
 
 body {
-    background: #040814;
-    font-family: "Plus Jakarta Sans", sans-serif;
     min-height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
     position: relative;
     color: white;
+    background: #040814;
+    font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 body::before {
@@ -29,14 +32,14 @@ body::before {
     position: fixed;
     inset: 0;
     background-image:
-        linear-gradient(rgba(0,255,255,.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,255,255,.06) 1px, transparent 1px);
+        linear-gradient(rgba(0, 255, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.06) 1px, transparent 1px);
     background-size: 45px 45px;
 }
 
 .icon {
     position: fixed;
-    color: rgba(0,255,255,.12);
+    color: rgba(0, 255, 255, 0.12);
     font-size: 70px;
 }
 
@@ -46,48 +49,53 @@ body::before {
 .i4 { bottom: 80px; right: 90px; }
 
 .wrapper {
+    min-height: 100vh;
+    padding: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    padding: 24px;
     position: relative;
     z-index: 2;
 }
 
 .card {
     width: 500px;
-    background: linear-gradient(
-        180deg,
-        rgba(13,17,34,.97),
-        rgba(8,11,24,.97)
-    );
-    border: 1px solid rgba(255,255,255,.08);
-    border-radius: 24px;
     padding: 40px;
     text-align: center;
-    box-shadow: 0 20px 80px rgba(0,0,0,.5);
+
+    background: linear-gradient(
+        180deg,
+        rgba(13, 17, 34, 0.97),
+        rgba(8, 11, 24, 0.97)
+    );
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
 }
 
 .logo {
     width: 92px;
     height: 92px;
     margin: auto;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     font-size: 42px;
-    border-radius: 18px;
-    background: rgba(0,255,255,.05);
-    border: 1px solid rgba(0,255,255,.15);
     color: #19e5ff;
+
+    border-radius: 18px;
+    background: rgba(0, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 255, 0.15);
 }
 
 h1 {
+    margin-top: 25px;
     font-family: "Chakra Petch", sans-serif;
     font-size: 54px;
     font-weight: 700;
-    margin-top: 25px;
 }
 
 h1 span {
@@ -102,25 +110,27 @@ h1 span {
 
 .line {
     height: 1px;
-    background: rgba(255,255,255,.08);
     margin: 32px 0;
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .desc {
-    line-height: 1.8;
     color: #afc0dd;
     font-size: 18px;
+    line-height: 1.8;
 }
 
 .notice {
     margin-top: 30px;
     padding: 18px;
-    border-radius: 14px;
-    border: 1px solid rgba(0,255,255,.15);
-    background: rgba(0,255,255,.04);
-    text-align: left;
+
     color: #9eb1ce;
+    text-align: left;
     line-height: 1.6;
+
+    border: 1px solid rgba(0, 255, 255, 0.15);
+    border-radius: 14px;
+    background: rgba(0, 255, 255, 0.04);
 }
 
 .notice strong {
@@ -130,29 +140,95 @@ h1 span {
 button {
     width: 100%;
     height: 58px;
-    border: none;
-    margin-top: 26px;
-    border-radius: 12px;
-    background: #19e5ff;
+    margin-top: 18px;
+
     color: #00131a;
-    font-size: 22px;
+    background: #19e5ff;
+
+    border: none;
+    border-radius: 12px;
+
+    font-size: 20px;
     font-weight: 600;
     cursor: pointer;
 }
 
 button:hover {
-    box-shadow: 0 0 30px rgba(25,229,255,.45);
+    box-shadow: 0 0 30px rgba(25, 229, 255, 0.45);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: wait;
 }
 
 .register-button {
     margin-top: 14px;
     color: #19e5ff;
     background: transparent;
-    border: 1px solid rgba(25,229,255,.45);
+    border: 1px solid rgba(25, 229, 255, 0.45);
 }
 
 .register-button:hover {
-    background: rgba(25,229,255,.08);
+    background: rgba(25, 229, 255, 0.08);
+}
+
+.login-form {
+    display: none;
+    margin-top: 28px;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #c7d4ea;
+    font-size: 14px;
+}
+
+.form-group input {
+    width: 100%;
+    height: 50px;
+    padding: 0 15px;
+
+    color: #ffffff;
+    background: #0c1225;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 11px;
+
+    font-size: 15px;
+}
+
+.form-group input::placeholder {
+    color: #70809a;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #19e5ff;
+    box-shadow: 0 0 0 3px rgba(25, 229, 255, 0.12);
+}
+
+#message {
+    min-height: 22px;
+    margin-top: 15px;
+    color: #ff7185;
+    text-align: center;
+    font-size: 14px;
+}
+
+.back-button {
+    height: 44px;
+    margin-top: 10px;
+    color: #9db1d4;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 15px;
 }
 
 .footer {
@@ -197,34 +273,177 @@ button:hover {
             Password Security Analyzer
         </div>
 
-        <div class="line"></div>
+        <div id="welcomeSection">
 
-        <div class="desc">
-            This tool is restricted to authorized users only.
-            Sign in to access the password generator,
-            strength analyzer and security research tools.
+            <div class="line"></div>
+
+            <div class="desc">
+                This tool is restricted to authorized users only.
+                Sign in to access the password generator,
+                strength analyzer and security research tools.
+            </div>
+
+            <div class="notice">
+                <strong>Two-Factor Authentication</strong>
+                is enforced. Registered users must verify their login
+                using the current code from their authenticator application.
+            </div>
+
+            <button type="button" onclick="showLoginForm()">
+                🛡 Sign In Securely
+            </button>
+
+            <button
+                type="button"
+                class="register-button"
+                onclick="window.location.href='register.html'"
+            >
+                Create an Account
+            </button>
+
         </div>
 
-        <div class="notice">
-            <strong>Two-Factor Authentication</strong>
-            is enforced. Registered users must verify their login
-            using the current code from their authenticator application.
-        </div>
+        <form id="loginForm" class="login-form">
 
-        <button type="button" onclick="window.location.href='signin.html'">
-            🛡 Sign In Securely
-        </button>
-        
-</div>
-        <button>
-            type="button"
-            class="register-button"
-            onclick="window.location.href='register.html'"
-            Create an Account
-        </button>
+            <div class="form-group">
+                <label for="username">Email or username</label>
+                <input
+                    id="username"
+                    type="text"
+                    placeholder="Enter your email or username"
+                    autocomplete="username"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                    id="password"
+                    type="password"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="token">Authenticator code</label>
+                <input
+                    id="token"
+                    type="text"
+                    inputmode="numeric"
+                    maxlength="6"
+                    pattern="[0-9]{6}"
+                    placeholder="Enter the 6-digit code"
+                    autocomplete="one-time-code"
+                    required
+                >
+            </div>
+
+            <button id="loginButton" type="submit">
+                Sign In
+            </button>
+
+            <p id="message"></p>
+
+            <button
+                type="button"
+                class="back-button"
+                onclick="showWelcome()"
+            >
+                Back
+            </button>
+
+        </form>
+
+        <div class="footer">
+            Bachelor Thesis Research Tool · Password Security & User Behaviour
+        </div>
 
     </div>
 </div>
+
+<script>
+const welcomeSection = document.getElementById("welcomeSection");
+const loginForm = document.getElementById("loginForm");
+const loginButton = document.getElementById("loginButton");
+const message = document.getElementById("message");
+
+function showLoginForm() {
+    welcomeSection.style.display = "none";
+    loginForm.style.display = "block";
+}
+
+function showWelcome() {
+    loginForm.style.display = "none";
+    welcomeSection.style.display = "block";
+    message.textContent = "";
+}
+
+loginForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const username =
+        document.getElementById("username").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    const token =
+        document.getElementById("token").value.trim();
+
+    message.textContent = "";
+    loginButton.disabled = true;
+    loginButton.textContent = "Signing in...";
+
+    try {
+        const response = await fetch("/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username,
+                password,
+                token
+            })
+        });
+
+        const contentType =
+            response.headers.get("content-type") || "";
+
+        if (!contentType.includes("application/json")) {
+            throw new Error(
+                "Backend not reached. Open the site at http://localhost:3000/login.html"
+            );
+        }
+
+        const data = await response.json();
+
+        if (data.error) {
+            throw new Error(data.error);
+        }
+
+        if (!data.success) {
+            throw new Error("Login failed.");
+        }
+
+        localStorage.setItem("loggedIn", "true");
+        localStorage.setItem("currentUser", username);
+
+        window.location.href = "index.html";
+
+    } catch (error) {
+        message.textContent =
+            error.message || "Login failed.";
+
+    } finally {
+        loginButton.disabled = false;
+        loginButton.textContent = "Sign In";
+    }
+});
+</script>
 
 </body>
 </html>
