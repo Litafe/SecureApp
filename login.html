@@ -19,21 +19,30 @@
 }
 
 body {
-    min-height: 100vh;
-    overflow-x: hidden;
-    position: relative;
-    color: white;
     background: #040814;
     font-family: "Plus Jakarta Sans", sans-serif;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+    color: white;
 }
 
 body::before {
     content: "";
     position: fixed;
     inset: 0;
+
     background-image:
-        linear-gradient(rgba(0, 255, 255, 0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 255, 0.06) 1px, transparent 1px);
+        linear-gradient(
+            rgba(0, 255, 255, 0.06) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0, 255, 255, 0.06) 1px,
+            transparent 1px
+        );
+
     background-size: 45px 45px;
 }
 
@@ -43,17 +52,32 @@ body::before {
     font-size: 70px;
 }
 
-.i1 { top: 90px; left: 70px; }
-.i2 { right: 70px; top: 340px; }
-.i3 { bottom: 60px; left: 90px; }
-.i4 { bottom: 80px; right: 90px; }
+.i1 {
+    top: 90px;
+    left: 70px;
+}
+
+.i2 {
+    right: 70px;
+    top: 340px;
+}
+
+.i3 {
+    bottom: 60px;
+    left: 90px;
+}
+
+.i4 {
+    bottom: 80px;
+    right: 90px;
+}
 
 .wrapper {
-    min-height: 100vh;
-    padding: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
+    padding: 24px;
     position: relative;
     z-index: 2;
 }
@@ -71,7 +95,9 @@ body::before {
 
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 24px;
-    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
+
+    box-shadow:
+        0 20px 80px rgba(0, 0, 0, 0.5);
 }
 
 .logo {
@@ -93,6 +119,7 @@ body::before {
 
 h1 {
     margin-top: 25px;
+
     font-family: "Chakra Petch", sans-serif;
     font-size: 54px;
     font-weight: 700;
@@ -140,32 +167,31 @@ h1 span {
 button {
     width: 100%;
     height: 58px;
-    margin-top: 18px;
-
-    color: #00131a;
-    background: #19e5ff;
+    margin-top: 26px;
 
     border: none;
     border-radius: 12px;
 
+    background: #19e5ff;
+    color: #00131a;
+
     font-size: 20px;
     font-weight: 600;
+
     cursor: pointer;
 }
 
 button:hover {
-    box-shadow: 0 0 30px rgba(25, 229, 255, 0.45);
-}
-
-button:disabled {
-    opacity: 0.6;
-    cursor: wait;
+    box-shadow:
+        0 0 30px rgba(25, 229, 255, 0.45);
 }
 
 .register-button {
     margin-top: 14px;
+
     color: #19e5ff;
     background: transparent;
+
     border: 1px solid rgba(25, 229, 255, 0.45);
 }
 
@@ -173,66 +199,9 @@ button:disabled {
     background: rgba(25, 229, 255, 0.08);
 }
 
-.login-form {
-    display: none;
-    margin-top: 28px;
-    text-align: left;
-}
-
-.form-group {
-    margin-bottom: 16px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    color: #c7d4ea;
-    font-size: 14px;
-}
-
-.form-group input {
-    width: 100%;
-    height: 50px;
-    padding: 0 15px;
-
-    color: #ffffff;
-    background: #0c1225;
-
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 11px;
-
-    font-size: 15px;
-}
-
-.form-group input::placeholder {
-    color: #70809a;
-}
-
-.form-group input:focus {
-    outline: none;
-    border-color: #19e5ff;
-    box-shadow: 0 0 0 3px rgba(25, 229, 255, 0.12);
-}
-
-#message {
-    min-height: 22px;
-    margin-top: 15px;
-    color: #ff7185;
-    text-align: center;
-    font-size: 14px;
-}
-
-.back-button {
-    height: 44px;
-    margin-top: 10px;
-    color: #9db1d4;
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    font-size: 15px;
-}
-
 .footer {
     margin-top: 22px;
+
     color: #8c9cb6;
     font-size: 14px;
     line-height: 1.6;
@@ -257,15 +226,15 @@ button:disabled {
 
 <body>
 
-<div class="icon i1">🛡</div>
-<div class="icon i2">🔑</div>
-<div class="icon i3">🔒</div>
-<div class="icon i4">🌀</div>
+<div class="icon i1">S</div>
+<div class="icon i2">K</div>
+<div class="icon i3">L</div>
+<div class="icon i4">2FA</div>
 
 <div class="wrapper">
     <div class="card">
 
-        <div class="logo">🛡</div>
+        <div class="logo">S</div>
 
         <h1>SECURE<span>SYS</span></h1>
 
@@ -273,124 +242,46 @@ button:disabled {
             Password Security Analyzer
         </div>
 
-        <div id="welcomeSection">
+        <div class="line"></div>
 
-            <div class="line"></div>
-
-            <div class="desc">
-                This tool is restricted to authorized users only.
-                Sign in to access the password generator,
-                strength analyzer and security research tools.
-            </div>
-
-            <div class="notice">
-                <strong>Two-Factor Authentication</strong>
-                is enforced. Registered users must verify their login
-                using the current code from their authenticator application.
-            </div>
-
-            <button type="button" onclick="showLoginForm()">
-                🛡 Sign In Securely
-            </button>
-
-            <button
-                type="button"
-                class="register-button"
-                onclick="window.location.href='register.html'"
-            >
-                Create an Account
-            </button>
-
+        <div class="desc">
+            Access the password generator, strength analyzer,
+            and security research tools.
         </div>
 
-        <form id="loginForm" class="login-form">
+        <div class="notice">
+            <strong>Prototype access</strong>
+            is enabled for development and thesis testing.
+            The authentication check is temporarily bypassed.
+        </div>
 
-            <div class="form-group">
-                <label for="username">Email or username</label>
-                <input
-                    id="username"
-                    type="text"
-                    placeholder="Enter your email or username"
-                    autocomplete="username"
-                    required
-                >
-            </div>
+        <button type="button" onclick="enterApplication()">
+            Sign In Securely
+        </button>
 
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input
-                    id="password"
-                    type="password"
-                    placeholder="Enter your password"
-                    autocomplete="current-password"
-                    required
-                >
-            </div>
-
-            <div class="form-group">
-                <label for="token">Authenticator code</label>
-                <input
-                    id="token"
-                    type="text"
-                    inputmode="numeric"
-                    maxlength="6"
-                    pattern="[0-9]{6}"
-                    placeholder="Enter the 6-digit code"
-                    autocomplete="one-time-code"
-                    required
-                >
-            </div>
-
-            <button id="loginButton" type="submit">
-                Sign In
-            </button>
-
-            <p id="message"></p>
-
-            <button
-                type="button"
-                class="back-button"
-                onclick="showWelcome()"
-            >
-                Back
-            </button>
-
-        </form>
+        <button
+            type="button"
+            class="register-button"
+            onclick="window.location.href='register.html'"
+        >
+            Create an Account
+        </button>
 
         <div class="footer">
-            Bachelor Thesis Research Tool · Password Security & User Behaviour
+            Bachelor Thesis Research Tool
+            Password Security and User Behaviour
         </div>
 
     </div>
 </div>
 
 <script>
-const welcomeSection = document.getElementById("welcomeSection");
-const loginForm = document.getElementById("loginForm");
-const message = document.getElementById("message");
-
-function showLoginForm() {
-    welcomeSection.style.display = "none";
-    loginForm.style.display = "block";
-}
-
-function showWelcome() {
-    loginForm.style.display = "none";
-    welcomeSection.style.display = "block";
-    message.textContent = "";
-}
-
-loginForm.addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    const username =
-        document.getElementById("username").value.trim();
-
+function enterApplication() {
     localStorage.setItem("loggedIn", "true");
-    localStorage.setItem("currentUser", username);
+    localStorage.setItem("currentUser", "prototype-user");
 
     window.location.href = "index.html";
-});
+}
 </script>
 
 </body>
