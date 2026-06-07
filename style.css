@@ -104,6 +104,33 @@
     font-size:12px;
 }
 
+@media(max-width:568px){
+    .container{
+        width:92%;
+        padding:20px;
+    }
+.tools h3 {
+    color: #ffffff;
+}
+
+#output,
+#strength {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    min-height: 24px;
+    margin: 14px 0 25px;
+    overflow-wrap: anywhere;
+}
+
+.tools input {
+    color: #ffffff;
+}
+
+.tools input::placeholder {
+    color: #8696b3;
+}
+
 @media(max-width:768px){
     .container{
         width:92%;
@@ -117,13 +144,4 @@
     .subtitle{
         font-size:14px;
     }
-
-    .tools{
-    color:#ffffff;
-}
-
-.tools p,
-.tools div,
-.tools label{
-    color:#ffffff;
 }
