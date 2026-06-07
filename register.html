@@ -4,209 +4,313 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Register - SecureApp</title>
+<title>Create Account - SecureSys</title>
 
-<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
-.register-form input {
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    width: 100%;
-    height: 46px;
-    margin-bottom: 12px;
-    padding: 0 14px;
+}
 
-    color: #ffffff;
+body {
+    background: #040814;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    min-height: 100vh;
+    color: white;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0,255,255,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,255,.06) 1px, transparent 1px);
+    background-size: 45px 45px;
+}
+
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 15px;
+    position: relative;
+    z-index: 2;
+}
+
+.card {
+    width: 540px;
+    padding: 40px;
+    background: linear-gradient(
+        180deg,
+        rgba(13,17,34,.97),
+        rgba(8,11,24,.97)
+    );
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 24px;
+    box-shadow: 0 20px 80px rgba(0,0,0,.5);
+}
+
+.logo {
+    width: 92px;
+    height: 92px;
+    margin: auto;
+    display: grid;
+    place-items: center;
+    font-size: 42px;
+    border-radius: 18px;
+    background: rgba(0,255,255,.05);
+    border: 1px solid rgba(0,255,255,.15);
+}
+
+h1 {
+    margin-top: 24px;
+    text-align: center;
+    font-family: "Chakra Petch", sans-serif;
+    font-size: 44px;
+}
+
+h1 span {
+    color: #19e5ff;
+}
+
+.subtitle {
+    margin: 8px 0 28px;
+    text-align: center;
+    color: #9db1d4;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #c7d4ea;
+}
+
+.form-group input {
+    width: 100%;
+    height: 52px;
+    padding: 0 16px;
+    color: white;
     background: #0c1225;
-
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 11px;
+    font-size: 15px;
 }
 
-.register-form input::placeholder {
-    color: #8696b3;
-}
-
-.register-form input:focus {
+.form-group input:focus {
     outline: none;
-    border-color: #18e4ff;
-    box-shadow: 0 0 0 3px rgba(24, 228, 255, 0.12);
+    border-color: #19e5ff;
+    box-shadow: 0 0 0 3px rgba(25,229,255,.12);
 }
 
-.register-form button {
+.form-group input::placeholder {
+    color: #70809a;
+}
+
+button {
     width: 100%;
-    height: 48px;
-
-    color: #00131a;
-    background: #18e4ff;
-
+    height: 58px;
+    margin-top: 12px;
     border: none;
     border-radius: 12px;
-
-    font-size: 15px;
+    background: #19e5ff;
+    color: #00131a;
+    font-size: 19px;
     font-weight: 700;
     cursor: pointer;
 }
 
-.register-form button:disabled {
-    opacity: 0.6;
+button:disabled {
+    opacity: .6;
     cursor: wait;
 }
 
 #message {
     min-height: 22px;
-    margin-top: 15px;
-    font-size: 14px;
-}
-
-.message-error {
+    margin-top: 16px;
+    text-align: center;
     color: #ff7185;
-}
-
-.message-success {
-    color: #5ef2a0;
 }
 
 .qr-section {
     display: none;
-    margin-top: 24px;
-    padding: 20px;
-
-    color: #b5c3dd;
-    background: rgba(0, 255, 255, 0.04);
-
-    border: 1px solid rgba(0, 255, 255, 0.15);
-    border-radius: 16px;
+    text-align: center;
 }
 
 .qr-section h2 {
-    margin-bottom: 12px;
-    color: #ffffff;
+    color: white;
+    margin-bottom: 14px;
 }
 
 .qr-section p {
-    margin: 12px 0;
+    color: #afc0dd;
     line-height: 1.6;
+    margin: 14px 0;
 }
 
 .qr-section img {
-    width: 210px;
+    width: 220px;
     max-width: 100%;
     padding: 10px;
-
-    background: #ffffff;
+    background: white;
     border-radius: 12px;
 }
 
 .continue-link {
     display: inline-block;
-    margin-top: 12px;
-    padding: 12px 22px;
-
+    margin-top: 14px;
+    padding: 14px 24px;
     color: #00131a;
-    background: #18e4ff;
-
+    background: #19e5ff;
     border-radius: 10px;
     text-decoration: none;
     font-weight: 700;
 }
 
-.footer-text a {
-    color: #18e4ff;
+.links {
+    margin-top: 22px;
+    text-align: center;
+    color: #9db1d4;
+}
+
+.links a {
+    color: #19e5ff;
     text-decoration: none;
     font-weight: 600;
+}
+
+@media (max-width: 560px) {
+    .card {
+        width: 100%;
+        padding: 28px 20px;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="wrapper">
+    <div class="card">
 
-    <div class="shield-box">🛡️</div>
+        <div class="logo">🔐</div>
 
-    <h1 class="logo">Secure<span>App</span></h1>
-    <p class="subtitle">Create your account</p>
+        <h1>CREATE <span>ACCOUNT</span></h1>
 
-    <form id="registerForm" class="register-form">
-
-        <input
-            id="username"
-            type="text"
-            placeholder="Email or username"
-            autocomplete="username"
-            required
-        >
-
-        <input
-            id="password"
-            type="password"
-            placeholder="Create a password"
-            autocomplete="new-password"
-            minlength="8"
-            required
-        >
-
-        <input
-            id="confirmPassword"
-            type="password"
-            placeholder="Confirm your password"
-            autocomplete="new-password"
-            minlength="8"
-            required
-        >
-
-        <button id="registerButton" type="submit">
-            Register
-        </button>
-
-        <p id="message"></p>
-
-    </form>
-
-    <section id="qrSection" class="qr-section">
-
-        <h2>Connect your authenticator app</h2>
-
-        <p>
-            Scan this QR code with Google Authenticator,
-            Microsoft Authenticator, or another TOTP application.
+        <p class="subtitle">
+            Register and connect your authenticator application
         </p>
 
-        <img id="qrImage" alt="Authenticator registration QR code">
+        <form id="registerForm">
 
-        <p>
-            After scanning the QR code, continue to the login page and
-            enter the current six-digit code from your authenticator app.
-        </p>
+            <div class="form-group">
+                <label for="username">Email or username</label>
+                <input
+                    id="username"
+                    type="text"
+                    placeholder="Enter your email or username"
+                    autocomplete="username"
+                    required
+                >
+            </div>
 
-        <a class="continue-link" href="login.html">
-            Continue to Login
-        </a>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                    id="password"
+                    type="password"
+                    placeholder="Create your password"
+                    autocomplete="new-password"
+                    minlength="8"
+                    required
+                >
+            </div>
 
-    </section>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm password</label>
+                <input
+                    id="confirmPassword"
+                    type="password"
+                    placeholder="Enter the password again"
+                    autocomplete="new-password"
+                    minlength="8"
+                    required
+                >
+            </div>
 
-    <div class="footer-text">
-        Already have an account?
-        <a href="login.html">Sign In</a>
+            <button id="registerButton" type="submit">
+                Create Account
+            </button>
+
+            <p id="message"></p>
+
+        </form>
+
+        <section id="qrSection" class="qr-section">
+
+            <h2>Connect your authenticator app</h2>
+
+            <p>
+                Scan this QR code using Google Authenticator,
+                Microsoft Authenticator, or another TOTP application.
+            </p>
+
+            <img id="qrImage" alt="Authenticator QR code">
+
+            <p>
+                After scanning, open your authenticator application
+                to obtain the six-digit code required during sign-in.
+            </p>
+
+            <a class="continue-link" href="signin.html">
+                Continue to Sign In
+            </a>
+
+        </section>
+
+        <div class="links">
+            Already registered?
+            <a href="signin.html">Sign in</a>
+            <br><br>
+            <a href="login.html">Return to welcome page</a>
+        </div>
+
     </div>
-
 </div>
 
 <script>
-const registerForm = document.getElementById("registerForm");
-const registerButton = document.getElementById("registerButton");
-const message = document.getElementById("message");
-const qrSection = document.getElementById("qrSection");
-const qrImage = document.getElementById("qrImage");
+const registerForm =
+    document.getElementById("registerForm");
+
+const registerButton =
+    document.getElementById("registerButton");
+
+const message =
+    document.getElementById("message");
+
+const qrSection =
+    document.getElementById("qrSection");
+
+const qrImage =
+    document.getElementById("qrImage");
 
 registerForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const username = document
-        .getElementById("username")
-        .value
-        .trim();
+    const username =
+        document.getElementById("username").value.trim();
 
     const password =
         document.getElementById("password").value;
@@ -215,11 +319,9 @@ registerForm.addEventListener("submit", async (event) => {
         document.getElementById("confirmPassword").value;
 
     message.textContent = "";
-    message.className = "";
 
     if (password !== confirmPassword) {
-        message.textContent = "The passwords do not match.";
-        message.className = "message-error";
+        message.textContent = "Passwords do not match.";
         return;
     }
 
@@ -238,6 +340,15 @@ registerForm.addEventListener("submit", async (event) => {
             })
         });
 
+        const contentType =
+            response.headers.get("content-type") || "";
+
+        if (!contentType.includes("application/json")) {
+            throw new Error(
+                "Backend not reached. Open the site using http://localhost:3000."
+            );
+        }
+
         const data = await response.json();
 
         if (data.error) {
@@ -246,12 +357,11 @@ registerForm.addEventListener("submit", async (event) => {
 
         if (!data.qrCodeUrl) {
             throw new Error(
-                "The account was created, but no QR code was returned."
+                "The server did not return a QR code."
             );
         }
 
         qrImage.src = data.qrCodeUrl;
-
         registerForm.style.display = "none";
         qrSection.style.display = "block";
 
@@ -259,11 +369,9 @@ registerForm.addEventListener("submit", async (event) => {
         message.textContent =
             error.message || "Registration failed.";
 
-        message.className = "message-error";
-
     } finally {
         registerButton.disabled = false;
-        registerButton.textContent = "Register";
+        registerButton.textContent = "Create Account";
     }
 });
 </script>
